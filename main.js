@@ -110,10 +110,9 @@ function vaciarCarrito() {
     actualizarCarrito();
     mostrarNotificacion('Carrito vaciado');
 
-    // 🔹 Cerrar el carrito antes de redirigir
+    // Cerrar el carrito antes de redirigir
     toggleCarrito();
 }
-
 
 function mostrarNotificacion(nombreProducto, cantidad) {
     const notificacion = document.getElementById('notificacion-carrito');
@@ -162,13 +161,25 @@ function comprarPorWhatsApp() {
     carrito = {};
     actualizarCarrito();
 
-    // 🔹 Redirigir al inicio después de enviar el mensaje
-    setTimeout(() => {
-        window.location.href = "#"; // Redirige al menú principal
-        window.open(url, "_blank"); // Abre WhatsApp en una nueva pestaña
-    }, 1000); // Espera 1 segundo para mostrar la notificación
-}
+    // 🔹 Cerrar el carrito antes de redirigir
+    toggleCarrito();
 
+    // 🔹 Redirigir al menú y abrir WhatsApp después de 1 segundo
+    setTimeout(() => {
+        window.location.href = "#";
+        window.open(url, "_blank");
+    }, 1000);
+}
+//Eliminar hamburguesa en móvil
+document.addEventListener("DOMContentLoaded", function () {
+    if (window.innerWidth <= 768) {
+        let menu = document.getElementById("navbarNav"); // Menú desplegable
+        let menuToggler = document.querySelector(".navbar-toggler"); // Botón hamburguesa
+
+        if (menu) menu.remove(); // Elimina el menú
+        if (menuToggler) menuToggler.remove(); // Elimina el botón hamburguesa
+    }
+});
 
 // Chatbot
 document.addEventListener("DOMContentLoaded", function () {
