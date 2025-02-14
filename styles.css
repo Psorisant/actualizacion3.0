@@ -368,3 +368,8 @@ body {
     text-decoration: none;
     transition: color 0.3s;
 }
+@media (max-width: 768px) {
+    .navbar-toggler, #navbarNav {
+        display: none !important;
+    }
+}
